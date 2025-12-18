@@ -17,6 +17,12 @@
     })();
     </script>
 
+    <!-- SweetAlert2 CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+
+
+
 </head>
 <body>
 
@@ -59,7 +65,7 @@
     <h2 class="section-title">About Me</h2>
     <div class="about-container">
         <div class="about-text">
-            <p>I am a Full Stack Developer, Data Analyst, and UI/UX Designer with over a year of experience. <br>
+            <p>I am a Full Stack Developer, Data Analyst, and UI/UX Designer with 2 year of experience. <br>
              During my 9 months at Brainpals Code Academy, I had the opportunity to work on impactful projects, <br>
              including developing an Estate Villa project and designing a personal portfolio website. <br>
              These experiences have allowed me to hone my skills in multiple areas of technology. <br>
@@ -198,19 +204,19 @@
             <img src="./img/Web.png" alt="Project 1" style="height: 195px;">
             <h3>Real Estate Villa Website</h3>
             <p>A full-stack web application for an estate villa booking platform, featuring property listings, real-time availability calendar, secure reservation system, and integrated payment gateway. Built with responsive design for seamless mobile and desktop experience.</p>
-            <button onclick="window.open('https://project1.com','_blank')">Visit Site</button>
+            <button onclick="window.open('#,'_blank')">Visit Site</button>
         </div>
         <div class="project-card">
             <img src="./img/DataAn.jpg" alt="Project 2">
             <h3>Data Analysis Dashboard</h3>
             <p>A data analysis project that involves processing and visualizing large datasets to extract meaningful insights, utilizing tools like Python, Tableau and Power BI.</p>
-            <button onclick="window.open('https://project2.com','_blank')">Visit Site</button>
+            <button onclick="window.open('#','_blank')">Visit Site</button>
         </div>
         <div class="project-card">
             <img src="./img/uiux.jpg" alt="Project 3">
             <h3>UIUX designs</h3>
             <p>A UI/UX design project showcasing user interface and experience design principles, including wireframes, prototypes, and interactive mockups created in Figma. Demonstrates proficiency in user research, accessibility standards, and modern design patterns.</p>
-            <button onclick="window.open('https://project3.com','_blank')">Visit Site</button>
+            <button onclick="window.open('#','_blank')">Visit Site</button>
         </div>
     </div>
 </section>
@@ -219,7 +225,7 @@
     <h2 class="section-title">Contact Me</h2>
     <div class="contact">
         <form class="contact-form" method="post" id="myForm">
-            <input type="text" id="from_name name="from_name" autocomplete="off" placeholder="Your Name" required>
+            <input type="text" id="from_name" name="from_name" autocomplete="off" placeholder="Your Name" required>
             <input type="email" id="from_email" name="from_email" autocomplete="off" placeholder="Your Email" required>
             <select id="subject" name="subject" required>
                 <option value="" disabled selected>Skills You Want Help With</option>
@@ -266,8 +272,20 @@
     © 2025 Daniel Onimisi Moses. All rights reserved.
   </div>
 </footer>
+
+<!-- Success Popup -->
+<div id="popup-overlay">
+  <div id="success-popup">
+    <div class="checkmark">✓</div>
+    <h3>Message Sent!</h3>
+    <p>Your message was sent successfully. I’ll get back to you soon.</p>
+  </div>
+</div>
+
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<!-- SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="main.js"></script>
 </body>
 </html>

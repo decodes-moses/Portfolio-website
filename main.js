@@ -165,15 +165,20 @@ $('#myForm').on('submit', function(event) {
     data: JSON.stringify(data),
     contentType: 'application/json',
     }).done(function() {
-        Swal.fire({
-            title: "Success!",
-            text: "Your Message sent Successfully!",
-            icon: "success"
-          });
-    $('#myForm').get(0).reset();
-    }).fail(function(error) {
-    alert('Oops... ' + JSON.stringify(error));
-    });
+  // Show popup
+  const popup = document.getElementById("popup-overlay");
+  popup.classList.add("active");
+
+  // Reset form
+  $('#myForm').get(0).reset();
+
+  // Hide popup after 4 seconds
+  setTimeout(() => {
+    popup.classList.remove("active");
+  }, 4000);
+})
+
+
 })
 
 
@@ -182,14 +187,18 @@ document.getElementById("contact-form").addEventListener("submit", function (e) 
   e.preventDefault();
 
   emailjs.sendForm("service_x315brt", "template_0td9waq", this)
-    .then(() => {
-      // Auto-reply to user
-      emailjs.send("service_x315brt", "template_e755gfw", {
-        to_name: this.from_name.value,
-        to_email: this.from_email.value,
-      });
+  .then(() => {
+
+    emailjs.send("service_x315brt", "template_e755gfw", {
+      reply_to: this.from_email.value,
+      to_name: this.from_name.value,
     })
-    .catch((error) => {
-      console.log("FAILED...", error);
-    });
+    .then(() => console.log("Auto reply sent"))
+    .catch(err => console.log("Auto reply failed", err));
+
+  })
+  .catch((error) => {
+    console.log("FAILED...", error);
+  });
+
 });
