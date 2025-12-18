@@ -14,6 +14,14 @@ body {
     color: var(--light-text);
     overflow-x: hidden;
 }
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* *{
+  box-sizing: border-box;
+} */
 body.dark {background: var(--dark-bg); color: var(--dark-text);}
 
 /* Navbar */
@@ -83,8 +91,41 @@ header {
     gap: 40px;
 }
 .hero-text {flex:1; min-width:300px;}
-.hero-text h1, h3 {font-size:3rem; margin-bottom:0.5rem;}
+.hero-text h1 {
+  font-size: 3rem;
+  margin-bottom:0.5rem;
+}
+
+.hero-text h3 {
+  font-size: 1.5rem;
+  margin-bottom:0.5rem;
+}
+
 .hero-text h2 {font-size:1.5rem; margin-bottom:20px;}
+@media (max-width: 768px) {
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .hero-text h2 {
+    font-size: 1.2rem;
+  }
+
+  .hero-text h3 {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  
+}
+
+
 .avatar-container {flex:1; min-width:250px; perspective:1000px; display:flex; justify-content:center; opacity:0; transform:scale(0.8); transition:opacity 1s ease, transform 1s ease;}
 .avatar-container.visible {opacity:1; transform:scale(1);}
 .avatar {width:350px; height:350px; border-radius:50%; border:5px solid white; transition: transform 0.2s ease, box-shadow 0.2s ease;}
@@ -195,6 +236,35 @@ body.dark .progress-bar {
   font-weight: 500;
 }
 
+/* MOBILE FIX: 2 radial bars per row */
+@media (max-width: 768px) {
+  .radial-bars {
+    grid-template-columns: repeat(2, 1fr); /* 2 per row */
+    gap: 40px;
+  }
+
+  .radial-bar {
+    width: 130px;
+    height: 130px;
+    margin: auto;
+  }
+
+  .radial-bar svg {
+    width: 130px;
+    height: 130px;
+  }
+
+  .radial-bar .percentage {
+    font-size: 1rem;
+  }
+
+  .radial-bar .text {
+    font-size: 0.9rem;
+  }
+}
+
+
+
 /* Projects */
 .projects {display:flex;  gap:40px; justify-content:center;}
 .project-card {background:#f0f0f0; border-radius:10px; overflow:hidden; padding:15px; width:300px; transition:0.3s; cursor:pointer; opacity:0; transform: translateY(30px);}
@@ -204,24 +274,49 @@ body.dark .project-card {background:#2b2b3c;}
 .project-card img {width:100%; border-radius:10px; margin-bottom:10px;}
 .project-card button {background: var(--primary-color); color:white; border:none; padding:10px 15px; border-radius:5px; cursor:pointer; transition:0.3s;}
 .project-card button:hover {transform: scale(1.05);}
-
 @media(max-width:768px){
+  .contact-form {
+    padding: 30px;
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 768px) {
   .projects {
     flex-direction: column;
-    /* align-items: center; */
-    gap: 20px;
-    width: 200%;
+    align-items: center;
+    gap: 30px; /* more space between cards */
+    width: 100%;
   }
-  
+
   .project-card {
     width: 100%;
-    max-width: 550px;
+    max-width: 95%;   /* almost full width but still clean */
+    padding: 40px;    /* makes card feel bigger */
   }
+
   .project-card img {
-    height: 200px;
     width: 100%;
+    height: 160px;    /* increase image height */
+    object-fit: cover;
+  }
+
+  .project-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .project-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .project-card button {
+    padding: 12px 18px;
+    font-size: 1rem;
+  }
 }
-}
+
 
 /* CONTACT FORM WITH COLORFUL BORDER OUTLINE */
 .contact {
@@ -262,7 +357,6 @@ body.dark .contact-form {
 .contact-form {
   width: 100%;
   margin: 0 auto;
-  max-width: 520px;
   padding: 70px;
   border-radius: 30px; /* fully rounded */
   position: relative;
