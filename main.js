@@ -125,14 +125,53 @@ function eraseRole() {
 }
 typeRole();
 
-// Light/Dark toggle for navbar
+// ========================
+// Light/Dark Theme Toggle
+// ========================
 const themeToggleNav = document.getElementById('themeToggleNav');
-themeToggleNav.addEventListener('click', ()=> document.body.classList.toggle('dark'));
 
-// Mobile hamburger toggle
+// Remember theme on page load
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'dark') {
+    document.body.classList.add('dark');
+    themeToggleNav.querySelector('i').classList.replace('fa-moon', 'fa-sun');
+}
+
+themeToggleNav.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+
+    const icon = themeToggleNav.querySelector('i');
+    const isDark = document.body.classList.contains('dark');
+
+    // Swap icon
+    icon.classList.replace(isDark ? 'fa-moon' : 'fa-sun', isDark ? 'fa-sun' : 'fa-moon');
+
+    // Save preference
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+});
+
+
+// ========================
+// Mobile Hamburger Toggle
+// ========================
 const hamburger = document.querySelector('.hamburger');
 const navbar = document.querySelector('.navbar');
-hamburger.addEventListener('click', () => { navbar.classList.toggle('active'); });
+
+hamburger.addEventListener('click', () => {
+    navbar.classList.toggle('active');
+    hamburger.classList.toggle('open'); // optional: animate hamburger to X
+});
+
+
+// ========================
+// Close navbar on nav link click (mobile)
+// ========================
+document.querySelectorAll('.navbar a').forEach(link => {
+    link.addEventListener('click', () => {
+        navbar.classList.remove('active');
+        hamburger.classList.remove('open');
+    });
+});
 
 // Smooth scroll for nav links
 document.querySelectorAll('.nav-links a').forEach(link => {
